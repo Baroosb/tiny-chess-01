@@ -7,9 +7,10 @@ library) and executes it. `main.py` reads no other file, per the rules.
 
 ## Design
 
-- Negamax alpha-beta with iterative deepening under a fixed 80,000-node
+- Negamax alpha-beta with iterative deepening under a fixed 60,000-node
   budget — no wall clock anywhere, fully deterministic (contender trials are
-  replayed and must match move for move).
+  replayed and must match move for move). The budget is sized so a whole
+  8-game trial stays inside the 1,800-second wall limit.
 - Transposition table (depth / value / flag / best move) with PV ordering.
 - Null-move pruning (R=2), late move reductions, check extensions.
 - Quiescence search with check evasions.
@@ -20,7 +21,7 @@ library) and executes it. `main.py` reads no other file, per the rules.
 
 ## Local practice results (official kit, local machine)
 
-3-trial mean Elo **1,393** (trials 1,451 / 1,364 / 1,364) on the kit's
+3-trial mean Elo **1,394** (trials 1,279 / 1,451 / 1,451) on the kit's
 6-game practice trials. The house baseline (sunfish 4K, itself an lzma
 payload of 3,649 bytes) rates a 1,365 mean on the same trials. Local scores
 are indicative only; the staged final uses unseen openings.
